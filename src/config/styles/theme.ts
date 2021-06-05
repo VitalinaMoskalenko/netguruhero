@@ -4,6 +4,8 @@ export const theme = {
   colors: {
     white: ColorType.white,
     black: ColorType.black,
+    green: ColorType.green,
+    blue: ColorType.blue,
   },
   fonts: {
     size: {
