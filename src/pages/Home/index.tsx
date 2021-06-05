@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Body, Button, HeroItem } from "../../components";
+import { Button, HeroItem } from "../../components";
 import { useTranslation } from "react-i18next";
 import ListHeader from "./components/ListHeader";
 import { useQuery } from "react-query";
 import { fetchHeroesService } from "../../services/heroes";
 import { Heroes } from "../../types";
+import LoadMoreFooter from "./components/LoadMoreFooter";
 
 const Container = styled.div`
   padding: 20px 40px;
@@ -17,24 +18,6 @@ const AddHeroButton = styled(Button).attrs({
     width: 200,
   },
 })``;
-
-const LoadMoreContainer = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const LoadMoreButton = styled(Button).attrs(({ theme }) => {
-  return {
-    style: {
-      backgroundColor: theme.colors.blue,
-      width: 200,
-    },
-  };
-})``;
-
-const NoLoadMoreHeroesText = styled(Body)`
-  font-weight: bold;
-`;
 
 const HeroContainer = styled.div`
   margin-bottom: 12px;
@@ -87,18 +70,7 @@ const Home = () => {
           />
         </HeroContainer>
       ))}
-      <LoadMoreContainer>
-        {!endOfListReached ? (
-          <LoadMoreButton
-            onClick={loadMore}
-            text={t(`${baseTranslationPath}loadMore`)}
-          />
-        ) : (
-          <NoLoadMoreHeroesText>
-            {t(`${baseTranslationPath}noMoreLoadHeroes`)}
-          </NoLoadMoreHeroesText>
-        )}
-      </LoadMoreContainer>
+      <LoadMoreFooter endOfListReached={endOfListReached} loadMore={loadMore} />
     </Container>
   );
 };
