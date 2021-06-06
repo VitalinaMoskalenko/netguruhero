@@ -1,3 +1,4 @@
 export enum AppRouteType {
-    home = "/",
+  home = "/",
+  addHeroForm = "/addHeroForm",
 }

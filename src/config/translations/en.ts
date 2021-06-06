@@ -7,6 +7,14 @@ const en = {
     description: "Description",
     noMoreLoadHeroes: "No more heroes to load :(",
   },
+  AddHeroForm: {
+    selectType: "Select type",
+    headerTitle: "Add hero",
+    avatarUrl: "Avatar URL",
+    fullName: "Full name",
+    type: "Type",
+    description: "Description",
+  },
 };
 
 export default en;

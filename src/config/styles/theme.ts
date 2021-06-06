@@ -6,6 +6,8 @@ export const theme = {
     black: ColorType.black,
     green: ColorType.green,
     blue: ColorType.blue,
+    gray: ColorType.gray,
+    black05: ColorType.black05,
   },
   fonts: {
     size: {

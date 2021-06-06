@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Button, HeroItem } from "../../components";
+import { Button, HeroItem, Spinner } from "../../components";
 import { useTranslation } from "react-i18next";
 import ListHeader from "./components/ListHeader";
 import { useQuery } from "react-query";
 import { fetchHeroesService } from "../../services/heroes";
-import { Heroes } from "../../types";
+import { AppRouteType, Heroes } from "../../types";
 import LoadMoreFooter from "./components/LoadMoreFooter";
+import { useHistory } from "react-router";
 
 const Container = styled.div`
   padding: 20px 40px;
@@ -26,6 +27,7 @@ const HeroContainer = styled.div`
 const baseTranslationPath = "Home.";
 
 const Home = () => {
+  const history = useHistory();
   const { t } = useTranslation();
 
   const [heroes, setHeroes] = useState<Heroes[]>([]);
@@ -53,11 +55,15 @@ const Home = () => {
     setItemSkip(itemSkip + 10);
   };
 
+  const openAddHero = () => {
+    history.push(AppRouteType.addHeroForm);
+  };
+
   return (
     <Container>
       <AddHeroButton
         text={t(`${baseTranslationPath}addHero`)}
-        onClick={() => {}}
+        onClick={openAddHero}
       />
       <ListHeader />
       {heroes?.map((item) => (
@@ -70,6 +76,7 @@ const Home = () => {
           />
         </HeroContainer>
       ))}
+      {isLoading && <Spinner />}
       <LoadMoreFooter endOfListReached={endOfListReached} loadMore={loadMore} />
     </Container>
   );
