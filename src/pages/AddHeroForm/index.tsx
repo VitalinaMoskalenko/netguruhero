@@ -10,6 +10,7 @@ const FormContainer = styled.div`
   padding: 40px;
   background-color: ${({ theme }) => theme.colors.gray};
   width: 400px;
+  height: fit-content;
   @media (max-width: ${BreakpointType.xs}px) {
     width: 100%;
     margin: 0px;

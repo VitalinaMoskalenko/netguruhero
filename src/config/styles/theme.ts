@@ -8,6 +8,7 @@ export const theme = {
     blue: ColorType.blue,
     gray: ColorType.gray,
     black05: ColorType.black05,
+    red: ColorType.red,
   },
   fonts: {
     size: {

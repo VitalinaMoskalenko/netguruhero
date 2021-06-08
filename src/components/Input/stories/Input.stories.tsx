@@ -14,3 +14,13 @@ export const defaultInput = () => (
     <Input label="Text" onChange={onChange} />
   </Container>
 );
+
+export const withErrorInput = () => (
+  <Container>
+    <Input
+      label="Input with Error"
+      onChange={onChange}
+      errorMessage="Input cannot be empty"
+    />
+  </Container>
+);

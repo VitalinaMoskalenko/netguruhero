@@ -20,3 +20,15 @@ export const defaultSelect = () => (
     />
   </Container>
 );
+
+export const withErrorSelect = () => (
+  <Container>
+    <Select
+      emptyText="Type"
+      data={data}
+      label="Label"
+      onValueSelect={onValueSelect}
+      errorMessage="Select cannot be empty"
+    />
+  </Container>
+);

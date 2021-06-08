@@ -14,6 +14,14 @@ const en = {
     fullName: "Full name",
     type: "Type",
     description: "Description",
+    errors: {
+      avatarUrlEmpty: "Avatar URL cannot be empty",
+      avatarNotUrl: "Please enter correct URL",
+      nameEmpty: "Name cannot be empty",
+      typeEmpty: "Type cannot be empty",
+      descriptionEmpty: "Description cannot be empty",
+    },
+    save: "Save",
   },
 };
 

@@ -14,21 +14,22 @@ type PropsType = {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  height: 200px;
 `;
 
 type FieldPropsType = {
   isError: boolean;
 };
 
-const Field = styled.input<FieldPropsType>`
+const Field = styled.textarea<FieldPropsType>`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 8px;
-  height: 40px;
   border: ${({ isError, theme }) =>
     isError ? `1px solid ${theme.colors.red}` : "0px"};
   padding: 16px;
   font-family: "Courier New", Courier, monospace;
+  resize: none;
 `;
 
 const Label = styled(SmallBody)`
@@ -42,14 +43,14 @@ const ErrorMessage = styled(SmallBody)`
   color: ${({ theme }) => theme.colors.red};
 `;
 
-const Input = ({
+const TextArea = ({
   label,
   value,
   onChange,
   containerStyle,
   errorMessage,
 }: PropsType) => {
-  const onChangeValue = (e: ChangeEvent<HTMLInputElement>) => {
+  const onChangeValue = (e: ChangeEvent<HTMLTextAreaElement>) => {
     onChange(e.target.value);
   };
 
@@ -62,4 +63,4 @@ const Input = ({
   );
 };
 
-export default Input;
+export default TextArea;

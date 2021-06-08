@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { HeroesResponseType } from "../../types";
-import { getHeroesEndpoint } from "./enpoints";
+import { HeroTypeResponseType } from "../../types/models/responses/HeroTypeResponseType";
+import { getHeroesEndpoint, getHeroesTypesEndpoint } from "./enpoints";
 
 export const fetchHeroesService = (
   first: number,
@@ -14,4 +15,10 @@ export const fetchHeroesService = (
       },
     })
     .then((response: AxiosResponse<HeroesResponseType>) => response.data);
+};
+
+export const fetchTypesService = (): Promise<HeroTypeResponseType> => {
+  return axios
+    .get(getHeroesTypesEndpoint)
+    .then((response: AxiosResponse<HeroTypeResponseType>) => response.data);
 };

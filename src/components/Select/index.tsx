@@ -8,12 +8,16 @@ type PropsType = {
   label: string;
   data: string[];
   onValueSelect: (value: string) => void;
+  errorMessage?: string;
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  position: relative;
+`;
 
 type ValueContainerType = {
   isOpen: boolean;
+  isError: boolean;
 };
 
 const ValueContainer = styled.div<ValueContainerType>`
@@ -24,18 +28,25 @@ const ValueContainer = styled.div<ValueContainerType>`
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 8px;
   height: 40px;
-  border: 0px;
+  border: ${({ isError, theme }) =>
+    isError ? `1px solid ${theme.colors.red}` : "0px"};
   padding: 0px 16px;
   border-bottom-left-radius: ${({ isOpen }) => (isOpen ? 0 : 8)}px;
   border-bottom-right-radius: ${({ isOpen }) => (isOpen ? 0 : 8)}px;
 `;
 
 const ValueListContainer = styled.div`
+  position: absolute;
+  top: 65px;
+  bottom: 0;
+  left: 0;
+  right: 0;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   overflow: auto;
   height: 200px;
   background-color: ${({ theme }) => theme.colors.white};
+  z-index: 100;
 `;
 
 const DropDownIcon = styled(Body)`
@@ -46,6 +57,12 @@ const DropDownIcon = styled(Body)`
 const Label = styled(SmallBody)`
   font-weight: bold;
   margin-bottom: 6px;
+  opacity: 0.5;
+`;
+
+const ErrorMessage = styled(SmallBody)`
+  margin-top: 4px;
+  color: ${({ theme }) => theme.colors.red};
 `;
 
 const ValueButtonContainer = styled.button`
@@ -70,6 +87,7 @@ const Select = ({
   value,
   emptyText,
   onValueSelect,
+  errorMessage,
 }: PropsType) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(value);
@@ -87,10 +105,15 @@ const Select = ({
   return (
     <Container>
       <Label>{label}</Label>
-      <ValueContainer onClick={toggleIsOpen} isOpen={isOpen}>
+      <ValueContainer
+        onClick={toggleIsOpen}
+        isOpen={isOpen}
+        isError={!!errorMessage}
+      >
         <Body>{selectedValue || emptyText}</Body>
         <DropDownIcon>&#10094;</DropDownIcon>
       </ValueContainer>
+      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
       {isOpen && (
         <ValueListContainer>
           {data.map((item, index) => {

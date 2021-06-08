@@ -5,4 +5,5 @@ export enum ColorType {
   blue = "#6199f3",
   gray = "#f5f6fb",
   black05 = "rgba(0,0,0, 0.5)",
+  red = "red",
 }
