@@ -25,6 +25,8 @@ const en = {
   },
   HeroDetails: {
     deleteButton: "Delete hero",
+    thereIsNoSuchHero: "OOPS! There is no such hero",
+    visitHomePage: "Visit homepage",
   },
 };
 

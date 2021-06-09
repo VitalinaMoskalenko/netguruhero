@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { Body, H4, H5 } from "../../../components";
 import { deleteHeroByIdService } from "../../../services/heroes";
 import { AppRouteType, Heroes } from "../../../types";
+import NoHero from "./NoHero";
 
 type PropsType = {
   heroData?: Heroes;
@@ -71,7 +72,9 @@ const Details = ({ heroData }: PropsType) => {
         <DeleteHero>{t(`${baseTranslation}deleteButton`)}</DeleteHero>
       </DeleteButton>
     </Container>
-  ) : null;
+  ) : (
+    <NoHero />
+  );
 };
 
 export default Details;

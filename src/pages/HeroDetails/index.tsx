@@ -15,6 +15,7 @@ const Container = styled.div`
   height: fit-content;
   @media (max-width: ${BreakpointType.xs}px) {
     width: 100%;
+    height: 100%;
     margin: 0px;
   }
 `;

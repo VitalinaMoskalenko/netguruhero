@@ -40,12 +40,6 @@ const Home = () => {
 
   const endOfListReached = data && data?.total_count === heroes.length;
 
-  const resetAndRefetchData = () => {
-    setHeroes([]);
-    setItemSkip(0);
-    refetch();
-  };
-
   useEffect(() => {
     if (data?.data) {
       setHeroes([...heroes, ...data?.data]);
@@ -58,12 +52,6 @@ const Home = () => {
     }
   }, [itemSkip]);
 
-  useEffect(() => {
-    history.listen((location) => {
-      location.pathname === AppRouteType.home && resetAndRefetchData();
-    });
-  }, []);
-
   const loadMore = () => {
     setItemSkip(itemSkip + 10);
   };
@@ -74,6 +62,7 @@ const Home = () => {
 
   const openHeroDetails = (id: string) => {
     history.push(`${AppRouteType.heroDetails}/${id}`);
+    window.scrollTo(0, 0);
   };
 
   return (
