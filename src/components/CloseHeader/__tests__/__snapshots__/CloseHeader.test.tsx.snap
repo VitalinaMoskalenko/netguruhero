@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders close header correctly 1`] = `
+<div
+  className="sc-iCoGMd bpOkbK"
+>
+  <h1
+    className="sc-eCApnc TwDaM"
+  >
+    CloseHeader
+  </h1>
+  <button
+    className="sc-fujyAs BQeBv"
+    onClick={[Function]}
+  >
+    <p
+      className="sc-bdnxRM sc-pNWdM jupkGm lpcoCX"
+    >
+      x
+    </p>
+  </button>
+</div>
+`;

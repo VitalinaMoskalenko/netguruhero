@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders spinner correctly 1`] = `
+<div
+  className="sc-bdnxRM jgTusu"
+>
+  <svg
+    className="sc-gtsrHT fXTByD"
+    viewBox="0 0 50 50"
+  >
+    <circle
+      className="sc-dlnjwi bSwSsA"
+      cx="25"
+      cy="25"
+      fill="none"
+      r="20"
+      strokeWidth="4"
+    />
+  </svg>
+</div>
+`;

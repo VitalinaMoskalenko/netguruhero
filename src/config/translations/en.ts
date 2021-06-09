@@ -23,6 +23,9 @@ const en = {
     },
     save: "Save",
   },
+  HeroDetails: {
+    deleteButton: "Delete hero",
+  },
 };
 
 export default en;

@@ -120,7 +120,7 @@ const Select = ({
             return (
               <ValueButtonContainer
                 onClick={() => selectValue(item)}
-                key={index}
+                key={item}
               >
                 <Body>{item}</Body>
               </ValueButtonContainer>

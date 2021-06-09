@@ -21,6 +21,7 @@ const AddHeroButton = styled(Button).attrs({
 })``;
 
 const HeroContainer = styled.div`
+  cursor: pointer;
   margin-bottom: 12px;
 `;
 
@@ -39,6 +40,12 @@ const Home = () => {
 
   const endOfListReached = data && data?.total_count === heroes.length;
 
+  const resetAndRefetchData = () => {
+    setHeroes([]);
+    setItemSkip(0);
+    refetch();
+  };
+
   useEffect(() => {
     if (data?.data) {
       setHeroes([...heroes, ...data?.data]);
@@ -51,12 +58,22 @@ const Home = () => {
     }
   }, [itemSkip]);
 
+  useEffect(() => {
+    history.listen((location) => {
+      location.pathname === AppRouteType.home && resetAndRefetchData();
+    });
+  }, []);
+
   const loadMore = () => {
     setItemSkip(itemSkip + 10);
   };
 
   const openAddHero = () => {
     history.push(AppRouteType.addHeroForm);
+  };
+
+  const openHeroDetails = (id: string) => {
+    history.push(`${AppRouteType.heroDetails}/${id}`);
   };
 
   return (
@@ -67,7 +84,7 @@ const Home = () => {
       />
       <ListHeader />
       {heroes?.map((item) => (
-        <HeroContainer key={item.id}>
+        <HeroContainer onClick={() => openHeroDetails(item.id)} key={item.id}>
           <HeroItem
             name={item.full_name}
             type={item.type.name}

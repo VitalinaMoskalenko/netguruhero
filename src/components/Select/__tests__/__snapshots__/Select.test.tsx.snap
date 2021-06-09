@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders select correctly 1`] = `
+<div
+  className="sc-dlnjwi fHmCXS"
+>
+  <p
+    className="sc-gtsrHT sc-gKAaRy ckjQab gALeJx"
+  >
+    
+  </p>
+  <div
+    className="sc-hKFxyN yeSJZ"
+    onClick={[Function]}
+  >
+    <p
+      className="sc-bdnxRM jupkGm"
+    >
+      
+    </p>
+    <p
+      className="sc-bdnxRM sc-jSFjdj jupkGm gdsnfc"
+    >
+      ❮
+    </p>
+  </div>
+</div>
+`;

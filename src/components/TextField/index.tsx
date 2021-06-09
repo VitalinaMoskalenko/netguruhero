@@ -1,6 +1,5 @@
 import React, { ChangeEvent } from "react";
 import styled, { CSSProperties } from "styled-components";
-import { Body } from "..";
 import { SmallBody } from "../Paragraphs";
 
 type PropsType = {

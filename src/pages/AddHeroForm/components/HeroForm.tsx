@@ -1,15 +1,16 @@
 import { Formik, FormikHelpers } from "formik";
 import React, { Fragment, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
+import { useHistory } from "react-router";
 import styled from "styled-components";
 import { Button, TextArea } from "../../../components";
 import Input from "../../../components/Input";
 import Select from "../../../components/Select";
 import { useFormikErrorMessage } from "../../../lib/hooks";
 import { heroFormValidationSchema } from "../../../lib/validators";
-import { fetchTypesService } from "../../../services/heroes";
-import { HeroType } from "../../../types";
+import { createHeroService, fetchTypesService } from "../../../services/heroes";
+import { AppRouteType, CreateHeroRequestType } from "../../../types";
 import { HeroFormikValues } from "../../../types/pages";
 
 const heroInitialFormikValues = {
@@ -40,10 +41,20 @@ const DescriptionInput = styled(TextArea).attrs({
 })``;
 
 const HeroForm = () => {
+  const history = useHistory();
   const { t } = useTranslation();
   const { getErrorMessage } = useFormikErrorMessage();
 
   const { data } = useQuery("fetchHeroType", fetchTypesService);
+
+  const { mutate } = useMutation(
+    (heroData: CreateHeroRequestType) => createHeroService(heroData),
+    {
+      onSuccess: () => {
+        history.goBack();
+      },
+    }
+  );
 
   const [herosTypes, setHeroesTypes] = useState<string[]>([]);
 
@@ -60,6 +71,18 @@ const HeroForm = () => {
     { validateForm }: FormikHelpers<HeroFormikValues>
   ) => {
     await validateForm(values);
+
+    const selectedType = data?.find((item) => item.name === values.type);
+
+    if (selectedType) {
+      const heroData: CreateHeroRequestType = {
+        avatar_url: values.avatarUrl,
+        full_name: values.fullName,
+        description: values.description,
+        type: selectedType.id,
+      };
+      mutate(heroData);
+    }
   };
 
   return (

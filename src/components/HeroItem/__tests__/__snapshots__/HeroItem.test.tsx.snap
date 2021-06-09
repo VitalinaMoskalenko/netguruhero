@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders hero item correctly 1`] = `
+<div
+  className="sc-iCoGMd jTODGz"
+>
+  <div
+    className="sc-fujyAs hMTAzb"
+  >
+    <img
+      className="sc-pNWdM jxqPfb"
+      src="placeholderAvatar.png"
+    />
+    <div
+      className="sc-iqAclL bsILWn"
+    >
+      <h1
+        className="sc-dlnjwi czuNcg"
+      >
+        
+      </h1>
+      <p
+        className="sc-jSFjdj sc-kEqXSa bQuzKy btUuiI"
+      >
+        
+      </p>
+    </div>
+  </div>
+  <p
+    className="sc-jSFjdj sc-jrsJWt bQuzKy hOSzWK"
+  >
+    
+  </p>
+  <p
+    className="sc-jSFjdj sc-crzoAE bQuzKy fqRwMk"
+  >
+    
+  </p>
+</div>
+`;

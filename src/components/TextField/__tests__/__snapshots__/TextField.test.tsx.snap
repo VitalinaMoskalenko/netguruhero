@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders text field correctly 1`] = `
+<div
+  className="sc-dlnjwi jMecMu"
+>
+  <p
+    className="sc-gtsrHT sc-eCApnc ckjQab jDEXhY"
+  >
+    
+  </p>
+  <textarea
+    className="sc-hKFxyN dCaicE"
+    onChange={[Function]}
+    value=""
+  />
+</div>
+`;
